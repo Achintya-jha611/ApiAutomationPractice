@@ -1,11 +1,11 @@
 package TestClasses;
 
-import JsonFiles.AddPlaces;
+import JsonFiles.payloads;
 import io.restassured.path.json.JsonPath;
 
 public class ComplexJsonParse {
     public static void main(String args[]) {
-        JsonPath JsonResp = new JsonPath(AddPlaces.Course());
+        JsonPath JsonResp = new JsonPath(payloads.Course());
         int numberOfCourses = JsonResp.getInt("courses.size()");
         System.out.println(numberOfCourses);// Fetching count of items in array in json body.suppose for a  key we are storing values in array,then to print size of that array
         int purchasePrice=JsonResp.getInt("dashboard.purchaseAmount");

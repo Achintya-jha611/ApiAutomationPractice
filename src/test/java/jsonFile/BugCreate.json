@@ -1,0 +1,12 @@
+{
+  "fields": {
+    "project":
+    {
+      "key": "SCRUM"
+    },
+    "summary": "Creating automation bug through script",
+    "issuetype": {
+      "name": "Bug"
+    }
+  }
+}

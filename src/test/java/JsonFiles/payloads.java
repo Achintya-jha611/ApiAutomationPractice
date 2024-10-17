@@ -1,6 +1,6 @@
 package JsonFiles;
 
-public class AddPlaces {
+public class payloads {
     public static String jsonBody(){
         return "{\r\n" +
                 "  \"location\": {\r\n" +
@@ -52,6 +52,15 @@ public class AddPlaces {
                 "    \r\n" +
                 "  ]\r\n" +
                 "}\r\n" +
-                "";}
+                "";
+    }
+    public static String AddBook(String name,String isbn,String aisle,String author){
+        return "{\n" +
+                "  \"name\":\""+name+"\",\n" +
+                "  \"isbn\":\""+isbn+"\",\n" +
+                "  \"aisle\":\""+aisle+"\",\n" +
+                "  \"author\":\""+author+"\"\n" +
+                "}";
+    }
 
 }

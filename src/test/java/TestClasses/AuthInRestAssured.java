@@ -3,10 +3,7 @@ package TestClasses;
 import io.restassured.RestAssured;
 import org.testng.annotations.Test;
 
-import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
@@ -25,6 +22,24 @@ public class AuthInRestAssured {
 
 
 }
+
+    @Test
+    public static void AuthorizeUsingPojo(){
+        RestAssured.baseURI="https://rahulshettyacademy.com";
+        String response=given().formParam("client_id","692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com").formParam("client_secret","erZOWM9g3UtwNRj340YYaK_W").formParam("grant_type","client_credentials").formParam("scope", "trust").when().post("/oauthapi/oauth2/resourceOwner/token").then().log().all().statusCode(200).extract().response().asString();
+        //System.out.println(response);
+        JsonPath jp=new JsonPath(response);
+        String token=jp.getString("access_token");
+        GetCoursePojo gp=given().queryParams("access_token",token).when().get("https://rahulshettyacademy.com/oauthapi/getCourseDetails").then().log().all().extract().response().as(GetCoursePojo.class);//using pojo classes to store response
+        System.out.println(gp.getInstructor());// using pojo class methods to print values
+        System.out.println(gp.getServices());
+        System.out.println(gp.getExpertise());
+        System.out.println(gp.getCourses());
+        System.out.println(gp.getLinkedIn());
+
+
+
+    }
 
 }
 /*

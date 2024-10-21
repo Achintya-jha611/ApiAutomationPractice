@@ -27,8 +27,7 @@ public class TestClassForSerializationUsingPojo {
    a.setTypes(types);
    a.setWebsite("random.com");
    a.setLanguage("English");
-   Response res=given().when().queryParam("key", "qaclick123").body(a).post("/maps/api/place/add/json").then().assertThat().statusCode(200).extract().response();
-   String resp= res.asString();
+   Response res=given().queryParam("key", "qaclick123").body(a).when().post("/maps/api/place/add/json").then().assertThat().statusCode(200).extract().response();   String resp= res.asString();
    System.out.println(resp);
 
     }
